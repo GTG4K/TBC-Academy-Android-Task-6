@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="error">#EA3238</color>
+    <color name="success">#0EE26E</color>
+    <color name="gray_text">#707070</color>
+    <color name="gray_border">#545454</color>
+    <color name="gray_background">#CC242424</color>
+    <color name="neon_purple">#B615DE</color>
+    <color name="neon_pink">#CF27A3</color>
+</resources>
