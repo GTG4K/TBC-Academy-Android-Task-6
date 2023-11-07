@@ -26,7 +26,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/poppins"
             android:paddingHorizontal="10dp"
-            android:text="New First Name"
+            android:text="@string/form_first_name"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -36,7 +36,7 @@
             android:layout_height="60dp"
             android:background="@drawable/et_gray"
             android:fontFamily="@font/poppins"
-            android:hint="Giorgi"
+            android:hint="@string/hint_first_name"
             android:inputType="text"
             android:paddingHorizontal="20dp"
             android:textColorHint="@color/gray_text" />
@@ -56,7 +56,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/poppins"
             android:paddingHorizontal="10dp"
-            android:text="New Last Name"
+            android:text="@string/form_last_name"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -66,7 +66,7 @@
             android:layout_height="60dp"
             android:background="@drawable/et_gray"
             android:fontFamily="@font/poppins"
-            android:hint="Tarkhnishvili"
+            android:hint="@string/hint_last_name"
             android:inputType="text"
             android:paddingHorizontal="20dp"
             android:textColorHint="@color/gray_text" />
@@ -86,7 +86,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/poppins"
             android:paddingHorizontal="10dp"
-            android:text="New Age"
+            android:text="@string/form_age"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -96,7 +96,7 @@
             android:layout_height="60dp"
             android:background="@drawable/et_gray"
             android:fontFamily="@font/poppins"
-            android:hint="20"
+            android:hint="@string/hint_age"
             android:inputType="number"
             android:paddingHorizontal="20dp"
             android:textColorHint="@color/gray_text" />
@@ -116,7 +116,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/poppins"
             android:paddingHorizontal="10dp"
-            android:text="New Email"
+            android:text="@string/form_email"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -126,7 +126,7 @@
             android:layout_height="60dp"
             android:background="@drawable/et_gray"
             android:fontFamily="@font/poppins"
-            android:hint="tarkhna@gmail.com"
+            android:hint="@string/hint_email"
             android:inputType="textEmailAddress"
             android:paddingHorizontal="20dp"
             android:textColorHint="@color/gray_text" />
@@ -146,7 +146,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_pink_purple"
             android:fontFamily="@font/poppins"
-            android:text="Confirm"
+            android:text="@string/btn_confirm"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -156,7 +156,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_pink_purple"
             android:fontFamily="@font/poppins"
-            android:text="Cancel"
+            android:text="@string/btn_cancel"
             android:textColor="@color/white" />
     </LinearLayout>
 

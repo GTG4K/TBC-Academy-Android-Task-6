@@ -25,29 +25,15 @@ class MainActivity : AppCompatActivity() {
         val etAge = binding.etAge
         val etEmail = binding.etEmail
 
-        var usersList: MutableList<User> = mutableListOf<User>()
+        var deletedUsers: Int = 0
+
+        val usersList: MutableList<User> = mutableListOf<User>()
         val validate = Validate()
 
-        binding.btnAdd.setOnClickListener {
-            validate.startValidation()
-            clearFields()
-            if (!validate.valueFilled(etFirstName.text.toString())) {
-                binding.tvErrorFirstName.text = "First name Value must be filled"
-            }
-            if (!validate.valueFilled(etLastName.text.toString())) {
-                binding.tvErrorLastName.text = "Last name Value must be filled"
-            }
-            if (!validate.valueFilled(etAge.text.toString())) {
-                binding.tvErrorAge.text = "Age Value must be filled"
-            }
-            if (!validate.isEmail(etEmail.text.toString())) {
-                binding.tvErrorEmail.text = "Email formatted incorrectly"
-            }
-            if (!validate.valueFilled(etEmail.text.toString())) {
-                binding.tvErrorEmail.text = "Email Value must be filled"
-            }
+        updateCounts(usersList, deletedUsers)
 
-            if (validate.validationPassed) {
+        binding.btnAdd.setOnClickListener {
+            if (validate.validateMainUser(binding = binding, this)) {
                 val user = User(
                     etFirstName.text.toString(),
                     etLastName.text.toString(),
@@ -56,34 +42,18 @@ class MainActivity : AppCompatActivity() {
                 )
                 if (!usersList.contains(user)) {
                     usersList.add(user)
-                    binding.tvStatus.text = "User added successfully"
+                    updateCounts(usersList, deletedUsers)
+                    binding.tvStatus.text = getString(R.string.success_user_added)
                     binding.tvStatus.setTextColor(ContextCompat.getColor(this, R.color.success))
                 } else {
-                    binding.tvStatus.text = "User already exists"
+                    binding.tvStatus.text = getString(R.string.fail_user_added)
                     binding.tvStatus.setTextColor(ContextCompat.getColor(this, R.color.error))
                 }
             }
         }
         binding.btnDelete.setOnClickListener {
-            validate.startValidation()
             clearFields()
-            if (!validate.valueFilled(etFirstName.text.toString())) {
-                binding.tvErrorFirstName.text = "First name Value must be filled"
-            }
-            if (!validate.valueFilled(etLastName.text.toString())) {
-                binding.tvErrorLastName.text = "Last name Value must be filled"
-            }
-            if (!validate.valueFilled(etAge.text.toString())) {
-                binding.tvErrorAge.text = "Age Value must be filled"
-            }
-            if (!validate.isEmail(etEmail.text.toString())) {
-                binding.tvErrorEmail.text = "Email formatted incorrectly"
-            }
-            if (!validate.valueFilled(etEmail.text.toString())) {
-                binding.tvErrorEmail.text = "Email Value must be filled"
-            }
-
-            if (validate.validationPassed) {
+            if (validate.validateMainUser(binding = binding, this)) {
                 val user = User(
                     etFirstName.text.toString(),
                     etLastName.text.toString(),
@@ -91,34 +61,20 @@ class MainActivity : AppCompatActivity() {
                     etEmail.text.toString()
                 )
                 if (!usersList.contains(user)) {
-                    binding.tvStatus.text = "User does not exist"
+                    binding.tvStatus.text = getString(R.string.fail_user_not_found)
                     binding.tvStatus.setTextColor(ContextCompat.getColor(this, R.color.error))
                 } else {
                     usersList.remove(user)
-                    binding.tvStatus.text = "User deleted successfully"
+                    deletedUsers++
+                    updateCounts(usersList, deletedUsers)
+                    binding.tvStatus.text = getString(R.string.success_user_deleted)
                     binding.tvStatus.setTextColor(ContextCompat.getColor(this, R.color.success))
                 }
             }
         }
         binding.btnEdit.setOnClickListener {
-            validate.startValidation()
             clearFields()
-            if (!validate.valueFilled(etFirstName.text.toString())) {
-                binding.tvErrorFirstName.text = "First name Value must be filled"
-            }
-            if (!validate.valueFilled(etLastName.text.toString())) {
-                binding.tvErrorLastName.text = "Last name Value must be filled"
-            }
-            if (!validate.valueFilled(etAge.text.toString())) {
-                binding.tvErrorAge.text = "Age Value must be filled"
-            }
-            if (!validate.isEmail(etEmail.text.toString())) {
-                binding.tvErrorEmail.text = "Email formatted incorrectly"
-            }
-            if (!validate.valueFilled(etEmail.text.toString())) {
-                binding.tvErrorEmail.text = "Email Value must be filled"
-            }
-            if (validate.validationPassed) {
+            if (validate.validateMainUser(binding = binding, this)) {
                 val user = User(
                     etFirstName.text.toString(),
                     etLastName.text.toString(),
@@ -126,11 +82,11 @@ class MainActivity : AppCompatActivity() {
                     etEmail.text.toString()
                 )
                 if (!usersList.contains(user)) {
-                    binding.tvStatus.text = "User not found"
+                    binding.tvStatus.text = getString(R.string.error_email_format)
                     binding.tvStatus.setTextColor(ContextCompat.getColor(this, R.color.error))
                 } else {
                     val updateUserIntent = Intent(this, UpdateUserActivity::class.java).apply {
-                        putExtra("userList",ArrayList(usersList))
+                        putExtra("userList", ArrayList(usersList))
                         putExtra("user", user)
                     }
                     startActivity(updateUserIntent)
@@ -139,10 +95,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun clearFields() {
+    private fun clearFields() {
+        binding.etFirstName.text.clear()
         binding.tvErrorFirstName.text = ""
+        binding.etLastName.text.clear()
         binding.tvErrorLastName.text = ""
+        binding.etAge.text.clear()
         binding.tvErrorAge.text = ""
+        binding.etEmail.text.clear()
         binding.tvErrorEmail.text = ""
+    }
+
+    private fun updateCounts(usersList: MutableList<User>, deletedUsers: Int) {
+        binding.tvUserCount.text = "Users: " + usersList.size.toString()
+        binding.tvDeletedUserCount.text = "Deleted Users: " + deletedUsers.toString()
     }
 }

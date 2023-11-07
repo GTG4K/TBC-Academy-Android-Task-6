@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">TBC-Academy-Android-Task-6</string>
+
+    <!-- status messages -->
+    <string name="success_user_added">User added successfully</string>
+    <string name="fail_user_added">User already exists</string>
+
+    <string name="success_user_deleted">User Deleted Successfully</string>
+    <string name="fail_user_not_found">User not found</string>
+
+    <!-- Errors -->
+    <string name="error_value_required">This value is required</string>
+    <string name="error_email_format">Email Formatted Incorrectly</string>
+    <string name="form_first_name">First Name</string>
+    <string name="hint_first_name">Giorgi</string>
+    <string name="form_last_name">Last Name</string>
+    <string name="hint_last_name">Tarkhnishvili</string>
+    <string name="form_age">Age</string>
+    <string name="hint_age">20</string>
+    <string name="form_email">Email</string>
+    <string name="hint_email">tarkhna@gmail.com</string>
+    <string name="btn_add_user">Add User</string>
+    <string name="btn_edit_user">Edit User</string>
+    <string name="btn_delete_user">Delete User</string>
+    <string name="btn_confirm">Confirm</string>
+    <string name="btn_cancel">Cancel</string>
 </resources>

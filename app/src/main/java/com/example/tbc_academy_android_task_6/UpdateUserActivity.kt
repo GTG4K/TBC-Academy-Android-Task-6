@@ -26,24 +26,8 @@ class UpdateUserActivity : AppCompatActivity() {
         val user = intent.getSerializableExtra("user") as User
 
         binding.btnConfirm.setOnClickListener {
-            validate.startValidation()
             clearFields()
-            if (!validate.valueFilled(etFirstName.text.toString())) {
-                binding.tvErrorFirstName.text = "First name Value must be filled"
-            }
-            if (!validate.valueFilled(etLastName.text.toString())) {
-                binding.tvErrorLastName.text = "Last name Value must be filled"
-            }
-            if (!validate.valueFilled(etAge.text.toString())) {
-                binding.tvErrorAge.text = "Age Value must be filled"
-            }
-            if (!validate.isEmail(etEmail.text.toString())) {
-                binding.tvErrorEmail.text = "Email formatted incorrectly"
-            }
-            if (!validate.valueFilled(etEmail.text.toString())) {
-                binding.tvErrorEmail.text = "Email Value must be filled"
-            }
-            if (validate.validationPassed) {
+            if (validate.validateUpdateUser(binding = binding, this)) {
                 val newUser = User(
                     etFirstName.text.toString(),
                     etLastName.text.toString(),
@@ -66,10 +50,14 @@ class UpdateUserActivity : AppCompatActivity() {
         }
     }
 
-    fun clearFields() {
+    private fun clearFields() {
+        binding.etFirstName.text.clear()
         binding.tvErrorFirstName.text = ""
+        binding.etLastName.text.clear()
         binding.tvErrorLastName.text = ""
+        binding.etAge.text.clear()
         binding.tvErrorAge.text = ""
+        binding.etEmail.text.clear()
         binding.tvErrorEmail.text = ""
     }
 }
