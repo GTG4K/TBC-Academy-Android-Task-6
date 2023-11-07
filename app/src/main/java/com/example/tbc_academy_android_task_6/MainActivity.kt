@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         updateCounts(usersList, deletedUsers)
 
         binding.btnAdd.setOnClickListener {
+            clearFields()
             if (validate.validateMainUser(binding = binding, this)) {
                 val user = User(
                     etFirstName.text.toString(),
@@ -104,6 +105,7 @@ class MainActivity : AppCompatActivity() {
         binding.tvErrorAge.text = ""
         binding.etEmail.text.clear()
         binding.tvErrorEmail.text = ""
+        binding.tvStatus.text = ""
     }
 
     private fun updateCounts(usersList: MutableList<User>, deletedUsers: Int) {
